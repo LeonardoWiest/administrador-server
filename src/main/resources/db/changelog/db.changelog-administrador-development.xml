@@ -8,4 +8,7 @@
 
 	<include file="db.types.xml" relativeToChangelogFile="true" />
 
+	<include file="latest/201900706_182620_create_tb_usuario.xml"
+		relativeToChangelogFile="true" />
+
 </databaseChangeLog>
