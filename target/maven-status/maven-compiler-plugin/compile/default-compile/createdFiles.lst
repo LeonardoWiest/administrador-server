@@ -1,2 +1,6 @@
-com\github\leonardowiest\administrador\AdministradorApplication.class
-com\github\leonardowiest\administrador\ServletInitializer.class
+com\github\leonardowiest\administrador\controller\AutenticacaoController.class
+com\github\leonardowiest\administrador\service\AutenticacaoService.class
+com\github\leonardowiest\administrador\domain\Usuario.class
+com\github\leonardowiest\administrador\Application.class
+com\github\leonardowiest\administrador\service\impl\AutenticacaoServiceImpl.class
+com\github\leonardowiest\administrador\controller\impl\AutenticacaoControllerImpl.class
