@@ -1,4 +1,4 @@
-package com.github.leonardowiest.administrador.server.api;
+package com.github.leonardowiest.administrador.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
