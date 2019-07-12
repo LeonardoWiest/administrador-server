@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog
-	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-	<changeSet author="Leonardo Wiest" id="201900706_182620"
-		logicalFilePath="201900706_182620_create_tb_usuario.xml">
+	<changeSet author="Leonardo Wiest" id="201900706_182620" logicalFilePath="201900706_182620_create_tb_usuario.xml">
 
 		<preConditions onFail="MARK_RAN">
 			<not>
@@ -15,53 +12,45 @@
 			</not>
 		</preConditions>
 
-		<createTable tableName="tb_usuario"
-			remarks="Informações básicas do usuário">
+		<createTable tableName="tb_usuario" remarks="Informações básicas do usuário">
 
-			<column name="id_usuario" type="${numeric.18x0}"
-				remarks="Identificador/sequencial do usuário">
+			<column name="id_usuario" type="${numeric.18x0}" remarks="Identificador/sequencial do usuário">
 				<constraints nullable="false" />
 			</column>
 
-			<column name="tx_nome" type="${varchar.30}"
-				remarks="Nome completo do usuário">
-				<constraints nullable="true" />
-			</column>
-
-			<column name="tx_login" type="${varchar.30}"
-				remarks="Login de acesso ao sistema do usuário">
+			<column name="tx_nome" type="${varchar.80}" remarks="Nome completo do usuário">
 				<constraints nullable="false" />
 			</column>
 
-			<column name="tx_senha" type="${varchar.32}"
-				remarks="Senha de acesso ao sistema do usuário">
-				<constraints nullable="true" />
-			</column>
-
-			<column name="fl_superusuario" type="${char.1}"
-				remarks="Identificador de Super Usuário">
-				<constraints nullable="true" />
-			</column>
-
-			<column name="dt_cadastro" type="${timestamp}"
-				remarks="Data de cadastro">
+			<column name="tx_login" type="${varchar.30}" remarks="Login de acesso ao sistema do usuário">
 				<constraints nullable="false" />
 			</column>
 
-			<column name="dt_manutencao" type="${timestamp}"
-				remarks="Data de manutenção">
+			<column name="tx_senha" type="${varchar.32}" remarks="Senha de acesso ao sistema do usuário">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="fl_superusuario" type="${char.1}" defaultValue="N" remarks="Identificador de Super Usuário">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="dt_cadastro" type="${timestamp}" remarks="Data de cadastro">
 				<constraints nullable="false" />
 			</column>
 
-			<column name="dt_exclusao" type="${timestamp}"
-				remarks="Data de exclusão">
-				<constraints nullable="true" />
+			<column name="dt_manutencao" type="${timestamp}" remarks="Data de manutenção">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="dt_exclusao" type="${timestamp}" remarks="Data de exclusão">
+				<constraints />
 			</column>
 
 		</createTable>
 
-		<addPrimaryKey columnNames="id_usuario"
-			constraintName="usuario_pk" tableName="tb_usuario" />
+		<addPrimaryKey columnNames="id_usuario" constraintName="usuario_pk" tableName="tb_usuario" />
+
+		<createSequence sequenceName="gen_usuario" />
 
 	</changeSet>
 
