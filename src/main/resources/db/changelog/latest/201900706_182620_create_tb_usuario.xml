@@ -27,7 +27,7 @@
 			</column>
 
 			<column name="tx_senha" type="${varchar.32}" remarks="Senha de acesso ao sistema do usuário">
-				<constraints nullable="true" />
+				<constraints nullable="false" />
 			</column>
 
 			<column name="fl_superusuario" type="${char.1}" defaultValue="N" remarks="Identificador de Super Usuário">
