@@ -11,10 +11,10 @@
 		<version>2.1.6.RELEASE</version>
 	</parent>
 
-	<groupId>com.github.leonardowiest.administrador.server</groupId>
-	<artifactId>administrador-server</artifactId>
+	<groupId>com.github.leonardowiest.wboss.server</groupId>
+	<artifactId>wboss-server</artifactId>
 	<version>1.00.00.000</version>
-	<name>administrador-server</name>
+	<name>wboss-server</name>
 	<description>...</description>
 
 	<profiles>
@@ -43,19 +43,19 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<com.github.leonardowiest.administrador.server.version>1.00.00.000
-		</com.github.leonardowiest.administrador.server.version>
+		<com.github.leonardowiest.wboss.server.version>1.00.00.000
+		</com.github.leonardowiest.wboss.server.version>
 
 		<io.springfox.version>2.9.2</io.springfox.version>
 		<org.modelmapper.version>2.3.3</org.modelmapper.version>
 	</properties>
 
 	<modules>
-		<module>administrador-server-util</module>
-		<module>administrador-server-dto</module>
-		<module>administrador-server-repository</module>
-		<module>administrador-server-service</module>
-		<module>administrador-server-api</module>
+		<module>wboss-server-util</module>
+		<module>wboss-server-dto</module>
+		<module>wboss-server-repository</module>
+		<module>wboss-server-service</module>
+		<module>wboss-server-api</module>
 	</modules>
 
 </project>
