@@ -1,8 +1,8 @@
-# administrador-server
+# wboss-server
 
 **Clone project** 
 
-	git clone https://github.com/LeonardoWiest/administrador-server.git
+	git clone https://github.com/LeonardoWiest/wboss-server.git
 
 **Build project**
 
@@ -12,7 +12,7 @@
 
 **Run project**
 
-	cd administrador-server-api/
+	cd wboss-server-api/
 	mvn spring-boot:run -Pdevelopment
 
 **Swagger**
