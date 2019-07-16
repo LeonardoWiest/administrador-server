@@ -12,7 +12,7 @@
 
 **Run project**
 
-	cd wboss-server-api/
+	cd wboss-server-api/wboss-server-api/
 	mvn spring-boot:run -Pdevelopment
 
 **Swagger**
