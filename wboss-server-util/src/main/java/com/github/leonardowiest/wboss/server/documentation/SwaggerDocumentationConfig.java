@@ -15,27 +15,21 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerDocumentationConfig {
 
 	@Bean
-	public Docket detalheApi() {
-
-		Docket docket = new Docket(DocumentationType.SWAGGER_2);
-
-		docket.select().apis(RequestHandlerSelectors.basePackage("com.github.leonardowiest.wboss.server.api"))
-				.paths(PathSelectors.any()).build().apiInfo(this.informacoesApi().build());
-
-		return docket;
+	public Docket produces() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.github.leonardowiest.wboss.server.api"))
+				.paths(PathSelectors.any()).build().apiInfo(this.infoBuilder().build());
 	}
 
-	private ApiInfoBuilder informacoesApi() {
+	private ApiInfoBuilder infoBuilder() {
 
 		ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
 
-		apiInfoBuilder.title("Api-Pessoa");
-		apiInfoBuilder.description("Api para realização de um CRUD.");
+		apiInfoBuilder.title("REST API - Wboss Server");
+		apiInfoBuilder.description("Documentação On-line");
 		apiInfoBuilder.version("1.0");
-		apiInfoBuilder.termsOfServiceUrl("Termo de uso: Deve ser usada para estudos.");
-		apiInfoBuilder.license("Licença - Open Source");
-		apiInfoBuilder.licenseUrl("http://www.ciceroednilson.com.br");
-		apiInfoBuilder.contact("contato");
+		apiInfoBuilder.termsOfServiceUrl("Terms of service");
+		apiInfoBuilder.contact("Leonardo Wiest");
 
 		return apiInfoBuilder;
 
