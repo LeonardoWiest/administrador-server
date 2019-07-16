@@ -1,4 +1,4 @@
-package com.github.leonardowiest.administrador.server.util.constants;
+package com.github.leonardowiest.wboss.server.util.constants;
 
 public final class RequestConstants {
 

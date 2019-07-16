@@ -1,4 +1,4 @@
-package com.github.leonardowiest.administrador.server.dto;
+package com.github.leonardowiest.wboss.server.dto;
 
 import java.io.Serializable;
 
