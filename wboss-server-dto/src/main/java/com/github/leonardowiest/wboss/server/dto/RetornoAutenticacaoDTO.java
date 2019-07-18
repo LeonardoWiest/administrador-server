@@ -2,14 +2,19 @@ package com.github.leonardowiest.wboss.server.dto;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@XmlRootElement
 @ApiModel
 @AllArgsConstructor
+@NoArgsConstructor
 public final class RetornoAutenticacaoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
