@@ -1,4 +1,4 @@
-package com.github.leonardowiest.wboss.server;
+package com.github.leonardowiest.wboss.server.service.impl;
 
 import org.springframework.stereotype.Service;
 
