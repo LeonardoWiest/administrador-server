@@ -2,6 +2,7 @@ package com.github.leonardowiest.wboss.server.util.constants;
 
 public final class GlobalConstants {
 
+	public static final String PROTOCOLO_HTTP = "http";
 	public static final String CONTEXT_PATH = "/wboss/bs";
 
 	public static final String PKG_PRINCIPAL = "com.github.leonardowiest.wboss.server";
