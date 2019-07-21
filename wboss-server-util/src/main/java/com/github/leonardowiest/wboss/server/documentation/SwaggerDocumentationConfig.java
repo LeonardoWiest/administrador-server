@@ -1,39 +1,46 @@
 package com.github.leonardowiest.wboss.server.documentation;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import java.util.Arrays;
+import java.util.HashSet;
 
-import springfox.documentation.builders.ApiInfoBuilder;
+import org.springframework.http.MediaType;
+
+import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.Contact;
+import springfox.documentation.schema.ModelRef;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration
-@EnableSwagger2
 public class SwaggerDocumentationConfig {
 
-	@Bean
-	public Docket produces() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.github.leonardowiest.wboss.server.api"))
-				.paths(PathSelectors.any()).build().apiInfo(this.infoBuilder().build());
+	private ApiInfo parametrosApiInfo;
+
+	private String parametrosPackageREST;
+
+	public SwaggerDocumentationConfig(ApiInfo apiInfo, String packageREST) {
+
+		super();
+
+		this.parametrosApiInfo = apiInfo;
+
+		this.parametrosPackageREST = packageREST;
+
 	}
 
-	private ApiInfoBuilder infoBuilder() {
+	public Docket produces() {
 
-		ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
-
-		apiInfoBuilder.title("REST API - Wboss Server");
-		apiInfoBuilder.description("Documentação On-line");
-		apiInfoBuilder.version("1.0");
-		apiInfoBuilder.termsOfServiceUrl("Terms of service");
-		apiInfoBuilder.contact(
-				new Contact("Leonardo Wiest", "https://github.com/LeonardoWiest", "leonardowiest@hotmail.com"));
-
-		return apiInfoBuilder;
+		return new Docket(DocumentationType.SWAGGER_2).apiInfo(parametrosApiInfo).select()
+				.apis(RequestHandlerSelectors.basePackage(parametrosPackageREST)).paths(PathSelectors.any()).build()
+				.enableUrlTemplating(Boolean.FALSE)
+				.produces(new HashSet<String>(
+						Arrays.asList(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE)))
+				.consumes(new HashSet<String>(
+						Arrays.asList(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE)))
+				.globalOperationParameters(Arrays.asList(new ParameterBuilder().name("Content-Type")
+						.description("Content-Type").defaultValue(MediaType.APPLICATION_JSON_VALUE)
+						.modelRef(new ModelRef("string")).parameterType("header").required(true).build()));
 
 	}
 
