@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.github.leonardowiest.wboss.server.dto.AutenticacaoDTO;
 import com.github.leonardowiest.wboss.server.dto.RetornoAutenticacaoDTO;
 import com.github.leonardowiest.wboss.server.repository.UsuarioRepository;
-import com.github.leonardowiest.wboss.server.security.JwtTokenProviderService;
+import com.github.leonardowiest.wboss.server.security.JwtTokenProvider;
 import com.github.leonardowiest.wboss.server.service.AutenticacaoService;
 
 @Service
@@ -28,7 +28,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
 	@Lazy
 	@Autowired
-	JwtTokenProviderService jwtTokenProviderService;
+	JwtTokenProvider jwtTokenProviderService;
 
 	@Override
 	public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {

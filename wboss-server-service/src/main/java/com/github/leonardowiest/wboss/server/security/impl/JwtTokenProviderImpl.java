@@ -8,17 +8,17 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.github.leonardowiest.wboss.server.domain.Usuario;
-import com.github.leonardowiest.wboss.server.security.JwtTokenProviderService;
+import com.github.leonardowiest.wboss.server.security.JwtTokenProvider;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-@Service
-public class JwtTokenProviderServiceImpl implements JwtTokenProviderService {
+@Component
+public class JwtTokenProviderImpl implements JwtTokenProvider {
 
 	@PostConstruct
 	protected void init() {
