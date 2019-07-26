@@ -5,6 +5,8 @@ public final class GlobalConstants {
 	public static final String PROTOCOLO_HTTP = "http";
 	public static final String CONTEXT_PATH = "/wboss/bs";
 	public static final String MATCHER_ALL = "/**";
+	public static final Long JWT_VALIDITY_MILLISECONDS = 3600000L; // 1hr
+	public static final String UNIVERSAL_SECRET_KEY = "*!\\\\WBoo$$sS980oo//";
 
 	public static final String USUARIO_PADRAO = "wboss";
 	public static final String USUARIO_ADMIN = "wboss-admin";
