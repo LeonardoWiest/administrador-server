@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-	<changeSet author="Leonardo Wiest" id="201900706_182620" logicalFilePath="201900706_182620_create_tb_usuario.xml">
+	<changeSet author="Leonardo Wiest" id="create_tb_usuario" logicalFilePath="create_tb_usuario.xml">
 
 		<preConditions onFail="MARK_RAN">
 			<not>
@@ -12,7 +12,7 @@
 			</not>
 		</preConditions>
 
-		<createTable tableName="tb_usuario" remarks="Informações básicas do usuário">
+		<createTable tableName="tb_usuario" remarks="Informações básicas de usuário">
 
 			<column name="id_usuario" type="${numeric.18x0}" remarks="Identificador/sequencial do usuário">
 				<constraints nullable="false" />

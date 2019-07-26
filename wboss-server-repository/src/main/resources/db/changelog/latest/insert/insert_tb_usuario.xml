@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="Leonardo Wiest" id="insert_tb_usuario" logicalFilePath="insert_tb_usuario.xml">
+
+		<insert dbms="postgresql" tableName="tb_usuario">
+			<column name="id_usuario" valueComputed="nextval('gen_usuario')" />
+			<column name="tx_nome" value="Leonardo Wiest" />
+			<column name="tx_login" value="wiest" />
+			<column name="tx_senha" value="123456" />
+			<column name="fl_superusuario" value="S" />
+			<column name="dt_cadastro" valueComputed="${current_timestamp}"  />
+		</insert>
+
+	</changeSet>
+
+</databaseChangeLog>

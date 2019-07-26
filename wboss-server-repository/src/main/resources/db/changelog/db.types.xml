@@ -13,6 +13,7 @@
 	<property name="char.1" value="char(1)" dbms="postgresql" />
 
 	<property name="timestamp" value="timestamp" dbms="postgresql" />
+	<property name="current_timestamp" value="current_timestamp" dbms="postgresql" />
 
 	<changeSet logicalFilePath="db/changelog/db.types.xml" author="Leonardo Wiest" id="20190706_173820" />
 
