@@ -43,7 +43,7 @@ public class Usuario implements UserDetails, Serializable {
 	@Column(name = "tx_senha", nullable = false)
 	private String senha;
 
-	@Column(name = "fl_superusuario", nullable = true)
+	@Column(name = "fl_superusuario")
 	private String flagSuperUsuario;
 
 	@Column(name = "dt_cadastro", nullable = false, updatable = false)
