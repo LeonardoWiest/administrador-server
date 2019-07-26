@@ -3,7 +3,10 @@ package com.github.leonardowiest.wboss.server.security.impl;
 import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.JWT_VALIDITY_MILLISECONDS;
 import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.UNIVERSAL_SECRET_KEY;
 
+import java.util.Base64;
 import java.util.Date;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +19,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtTokenProviderServiceImpl implements JwtTokenProviderService {
+
+	@PostConstruct
+	protected void init() {
+		UNIVERSAL_SECRET_KEY = Base64.getEncoder().encodeToString(UNIVERSAL_SECRET_KEY.getBytes());
+	}
 
 	@Override
 	public String gerarToken(Usuario usuario) {

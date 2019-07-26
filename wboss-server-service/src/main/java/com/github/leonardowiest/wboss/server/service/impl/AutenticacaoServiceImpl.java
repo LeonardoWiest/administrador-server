@@ -49,7 +49,9 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 	}
 
 	private RetornoAutenticacaoDTO buscarToken(String login) {
+
 		return new RetornoAutenticacaoDTO(jwtTokenProviderService.gerarToken(usuarioRepository.findByLogin(login)));
+
 	}
 
 }
