@@ -26,7 +26,6 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
-	@Lazy
 	@Autowired
 	JwtTokenProvider jwtTokenProviderService;
 
