@@ -1,7 +1,27 @@
 package com.github.leonardowiest.wboss.server.security;
 
-import br.com.sysmo.s1.server.monitor.service.config.security.GenericFilterBean;
+import java.io.IOException;
 
-public interface JwtTokenFilter extends GenericFilterBean {
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+import org.springframework.web.filter.GenericFilterBean;
+
+public class JwtTokenFilter extends GenericFilterBean {
+
+	private JwtTokenProvider jwtTokenProvider;
+
+	public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
+		this.jwtTokenProvider = jwtTokenProvider;
+	}
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		// TODO Auto-generated method stub
+
+	}
 
 }

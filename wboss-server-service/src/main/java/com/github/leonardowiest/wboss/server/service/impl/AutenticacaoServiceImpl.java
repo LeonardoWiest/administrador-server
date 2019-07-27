@@ -27,7 +27,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 	UsuarioRepository usuarioRepository;
 
 	@Autowired
-	JwtTokenProvider jwtTokenProviderService;
+	JwtTokenProvider jwtTokenProvider;
 
 	@Override
 	public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {
@@ -49,7 +49,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
 	private RetornoAutenticacaoDTO buscarToken(String login) {
 
-		return new RetornoAutenticacaoDTO(jwtTokenProviderService.gerarToken(usuarioRepository.findByLogin(login)));
+		return new RetornoAutenticacaoDTO(jwtTokenProvider.gerarToken(usuarioRepository.findByLogin(login)));
 
 	}
 
