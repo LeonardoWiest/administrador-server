@@ -35,16 +35,12 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 				autenticacaoDTO.getLogin(), autenticacaoDTO.getSenha());
 
-		setarSecurityContext(authenticationManager.authenticate(usernamePasswordAuthenticationToken));
-
-		return buscarToken(autenticacaoDTO.getLogin());
-	}
-
-	private void setarSecurityContext(Authentication authentication) {
+		Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		securityContext.setAuthentication(authentication);
 
+		return buscarToken(autenticacaoDTO.getLogin());
 	}
 
 	private RetornoAutenticacaoDTO buscarToken(String login) {
