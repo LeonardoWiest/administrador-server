@@ -11,7 +11,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
+
+import io.jsonwebtoken.JwtException;
 
 public class JwtTokenFilter extends GenericFilterBean {
 
@@ -33,11 +36,19 @@ public class JwtTokenFilter extends GenericFilterBean {
 
 			try {
 				jwtTokenProvider.validarToken(token);
-			} catch (Exception e) {
-				// TODO: handle exception
+			} catch (JwtException | IllegalArgumentException e) {
+
+				httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+				httpResponse.getWriter().flush();
+				httpResponse.getWriter().close();
+
+				return;
+
 			}
-			
+
 		}
+
+		SecurityContextHolder.getContext().setAuthentication(jwtTokenProvider.getAuthentication(token));
 
 	}
 

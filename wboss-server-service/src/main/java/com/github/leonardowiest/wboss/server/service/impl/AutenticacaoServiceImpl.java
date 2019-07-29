@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.github.leonardowiest.wboss.server.dto.AutenticacaoDTO;
@@ -35,10 +32,7 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 				autenticacaoDTO.getLogin(), autenticacaoDTO.getSenha());
 
-		Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-
-		SecurityContext securityContext = SecurityContextHolder.getContext();
-		securityContext.setAuthentication(authentication);
+		authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
 		return buscarToken(autenticacaoDTO.getLogin());
 	}
