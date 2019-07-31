@@ -14,13 +14,13 @@ import com.github.leonardowiest.wboss.server.security.HttpSecurityConfig;
 public class WBossSecurity extends WebSecurityConfigurerAdapter {
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		new AuthenticationManagerBuilderConfig(auth).builder();
+	protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+		new AuthenticationManagerBuilderConfig(authenticationManagerBuilder).builder();
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		new HttpSecurityConfig(http).builder();
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		new HttpSecurityConfig(httpSecurity).builder();
 	}
 
 }
