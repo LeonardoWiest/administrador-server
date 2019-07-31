@@ -9,6 +9,7 @@ public final class GlobalConstants {
 	public static final String JWT_BEARER = "Bearer ";
 	public static final String JWT_BASIC = "Basic ";
 	public static final String AUTHORIZATION = "Authorization";
+	public static final Long MAX_AGE = 3600L;
 
 	public static String UNIVERSAL_SECRET_KEY = "*!\\\\WBoo$$sS980oo//";
 
