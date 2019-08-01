@@ -10,9 +10,9 @@
 			<column name="id_usuario" valueComputed="nextval('gen_usuario')" />
 			<column name="tx_nome" value="Leonardo Wiest" />
 			<column name="tx_login" value="wiest" />
-			<column name="tx_senha" value="123456" />
+			<column name="tx_senha" value="5e85406645ffba624876ab27bc658c8a" />
 			<column name="fl_superusuario" value="S" />
-			<column name="dt_cadastro" valueComputed="${current_timestamp}"  />
+			<column name="dt_cadastro" valueComputed="${current_timestamp}" />
 		</insert>
 
 	</changeSet>
