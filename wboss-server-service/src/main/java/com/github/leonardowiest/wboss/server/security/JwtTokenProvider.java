@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import com.github.leonardowiest.wboss.server.domain.Usuario;
@@ -18,7 +20,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${wboss.jwt.secret.key}")
+    @Value("${wboss.global.secret.key}")
     private String chaveSecreta;
 
     @Value("${wboss.jwt.expiracao}")
@@ -55,6 +57,18 @@ public class JwtTokenProvider {
         }
 
         return bearerToken;
+    }
+
+    public Boolean validarToken(String token) {
+
+        Jwts.parser().setSigningKey(chaveSecreta.getBytes()).parseClaimsJws(token);
+
+        return Boolean.TRUE;
+
+    }
+
+    public Authentication buscarUsuarioAutenticado(String token) {
+        return new UsernamePasswordAuthenticationToken(token, null, null);
     }
 
 }
