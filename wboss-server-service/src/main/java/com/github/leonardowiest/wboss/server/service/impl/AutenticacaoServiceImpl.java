@@ -15,32 +15,32 @@ import com.github.leonardowiest.wboss.server.service.AutenticacaoService;
 @Service
 public class AutenticacaoServiceImpl implements AutenticacaoService {
 
-	@Lazy
-	@Autowired
-	AuthenticationManager authenticationManager;
+    @Lazy
+    @Autowired
+    AuthenticationManager authenticationManager;
 
-	@Lazy
-	@Autowired
-	UsuarioRepository usuarioRepository;
+    @Lazy
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
-	@Autowired
-	JwtTokenProvider jwtTokenProvider;
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
 
-	@Override
-	public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {
+    @Override
+    public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {
 
-		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-				autenticacaoDTO.getLogin(), autenticacaoDTO.getSenha());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(autenticacaoDTO.getLogin(),
+                autenticacaoDTO.getSenha());
 
-		authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-		return buscarToken(autenticacaoDTO.getLogin());
-	}
+        return buscarToken(autenticacaoDTO.getLogin());
+    }
 
-	private RetornoAutenticacaoDTO buscarToken(String login) {
+    private RetornoAutenticacaoDTO buscarToken(String login) {
 
-		return new RetornoAutenticacaoDTO(jwtTokenProvider.gerarToken(usuarioRepository.findByLogin(login)));
+        return new RetornoAutenticacaoDTO(jwtTokenProvider.gerarToken(usuarioRepository.findByLogin(login)));
 
-	}
+    }
 
 }

@@ -28,75 +28,71 @@ import lombok.Data;
 @Table(name = "tb_usuario")
 public class Usuario implements UserDetails, Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "i_usuario", nullable = false)
-	private Long id;
+    @Id
+    @Column(name = "id_usuario", nullable = false)
+    private Long id;
 
-	@Column(name = "tx_nome", nullable = false)
-	private String nome;
+    @Column(name = "tx_nome", nullable = false)
+    private String nome;
 
-	@Column(name = "tx_login", nullable = false)
-	private String login;
+    @Column(name = "tx_login", nullable = false)
+    private String login;
 
-	@Column(name = "tx_senha", nullable = false)
-	private String senha;
+    @Column(name = "tx_senha", nullable = false)
+    private String senha;
 
-	@Column(name = "fl_superusuario")
-	private String flagSuperUsuario;
+    @Column(name = "fl_superusuario")
+    private String flagSuperUsuario;
 
-	@Column(name = "dt_cadastro", nullable = false, updatable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date dataCadastro;
+    @Column(name = "dt_cadastro", nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    private Date dataCadastro;
 
-	@Column(name = "dt_manutencao")
-	@Temporal(TemporalType.TIMESTAMP)
-	@UpdateTimestamp
-	private Date dataManutencao;
+    @Column(name = "dt_manutencao")
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    private Date dataManutencao;
 
-	@Column(name = "dt_exclusao")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataExclusao;
+    @Column(name = "dt_exclusao")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataExclusao;
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public String getPassword() {
-		return senha;
-	}
+    @Override
+    public String getPassword() {
+        return senha;
+    }
 
-	@Override
-	public String getUsername() {
-		return senha;
-	}
+    @Override
+    public String getUsername() {
+        return senha;
+    }
 
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        return flagSuperUsuario.equals("S");
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isEnabled() {
+        return dataExclusao == null;
+    }
 }

@@ -1,55 +1,42 @@
 package com.github.leonardowiest.wboss.server.security;
 
-import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.AUTHORIZATION;
-import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.JWT_BASIC;
-
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
-import io.jsonwebtoken.JwtException;
+import com.github.leonardowiest.wboss.server.util.constants.GlobalConstants;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class JwtTokenFilter extends GenericFilterBean {
 
-	private JwtTokenProvider jwtTokenProvider;
+    private JwtTokenProvider jwtTokenProvider;
 
-	public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
-		this.jwtTokenProvider = jwtTokenProvider;
-	}
+    public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
 
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpServletResponse response = (HttpServletResponse) res;
 
-		String token = jwtTokenProvider.converterToken(httpResponse.getHeader(AUTHORIZATION));
+        String token = jwtTokenProvider.resolverHeaderToken((HttpServletRequest) req);
 
-		if (token != null && token.contains(JWT_BASIC)) {
+        if (token != null && !token.contains(GlobalConstants.JWT_BASIC)) {
 
-			try {
-				jwtTokenProvider.validarToken(token);
-			} catch (JwtException | IllegalArgumentException e) {
+        }
 
-				httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-				httpResponse.getWriter().flush();
-				httpResponse.getWriter().close();
+        filterChain.doFilter(req, response);
 
-				return;
-
-			}
-
-		}
-
-		SecurityContextHolder.getContext().setAuthentication(jwtTokenProvider.getAuthentication(token));
-
-	}
+    }
 
 }

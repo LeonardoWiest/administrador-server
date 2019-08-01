@@ -8,6 +8,6 @@ import com.github.leonardowiest.wboss.server.domain.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 
-	public abstract Usuario findByLogin(String login);
+    public abstract Usuario findByLogin(String login);
 
 }

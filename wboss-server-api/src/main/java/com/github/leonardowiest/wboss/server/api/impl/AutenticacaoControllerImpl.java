@@ -13,13 +13,13 @@ import com.github.leonardowiest.wboss.server.service.AutenticacaoService;
 @RestController
 public class AutenticacaoControllerImpl implements AutenticacaoController {
 
-	@Lazy
-	@Autowired
-	AutenticacaoService autenticacaoService;
+    @Lazy
+    @Autowired
+    AutenticacaoService autenticacaoService;
 
-	@Override
-	public RetornoAutenticacaoDTO realizarLogin(@RequestBody AutenticacaoDTO autenticacaoDTO) {
-		return autenticacaoService.realizarLogin(autenticacaoDTO);
-	}
+    @Override
+    public RetornoAutenticacaoDTO realizarLogin(@RequestBody AutenticacaoDTO autenticacaoDTO) {
+        return autenticacaoService.realizarLogin(autenticacaoDTO);
+    }
 
 }

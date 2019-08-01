@@ -11,13 +11,13 @@ import com.github.leonardowiest.wboss.server.service.UsuarioService;
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
-	@Lazy
-	@Autowired
-	UsuarioRepository usuarioRepository;
+    @Lazy
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
-	@Override
-	public Usuario findByLogin(String login) {
-		return usuarioRepository.findByLogin(login);
-	}
+    @Override
+    public Usuario findByLogin(String login) {
+        return usuarioRepository.findByLogin(login);
+    }
 
 }

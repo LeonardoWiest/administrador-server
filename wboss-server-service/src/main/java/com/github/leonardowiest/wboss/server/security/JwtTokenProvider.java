@@ -1,73 +1,60 @@
 package com.github.leonardowiest.wboss.server.security;
 
-import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.JWT_BEARER;
-import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.JWT_VALIDITY_MILLISECONDS;
-import static com.github.leonardowiest.wboss.server.util.constants.GlobalConstants.UNIVERSAL_SECRET_KEY;
-
 import java.util.Base64;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.github.leonardowiest.wboss.server.domain.Usuario;
+import com.github.leonardowiest.wboss.server.util.constants.GlobalConstants;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtTokenProvider {
 
-	@PostConstruct
-	protected void init() {
-		UNIVERSAL_SECRET_KEY = Base64.getEncoder().encodeToString(UNIVERSAL_SECRET_KEY.getBytes());
-	}
+    @Value("${wboss.jwt.secret.key}")
+    private String chaveSecreta;
 
-	public String gerarToken(Usuario usuario) {
+    @Value("${wboss.jwt.expiracao}")
+    private Long tempoExpiracao;
 
-		Claims claims = Jwts.claims().setSubject(usuario.getLogin());
+    @PostConstruct
+    protected void init() {
+        chaveSecreta = Base64.getEncoder().encodeToString(chaveSecreta.getBytes());
+    }
 
-		Date dataAtual = new Date();
+    public String gerarToken(Usuario usuario) {
 
-		Date dataExpiracao = new Date(dataAtual.getTime() + JWT_VALIDITY_MILLISECONDS);
+        Date dataGeracaoToken = new Date();
 
-		return Jwts.builder().setClaims(claims).setIssuedAt(dataAtual).setExpiration(dataExpiracao)
-				.signWith(SignatureAlgorithm.HS256, UNIVERSAL_SECRET_KEY).compact();
-	}
+        Date dataExpiracaoToken = new Date(dataGeracaoToken.getTime() + tempoExpiracao);
 
-	public String converterToken(String bearerToken) {
+        return Jwts.builder().setIssuer(usuario.getLogin()).setSubject(usuario.getId().toString()).setIssuedAt(dataGeracaoToken)
+                .setExpiration(dataExpiracaoToken).signWith(SignatureAlgorithm.HS256, chaveSecreta).compact();
 
-		if (bearerToken.startsWith(JWT_BEARER)) {
-			return bearerToken.substring(7, bearerToken.length());
-		}
+    }
 
-		return bearerToken;
+    public String resolverHeaderToken(HttpServletRequest req) {
+        return converterToken(req.getHeader(GlobalConstants.AUTHORIZATION));
+    }
 
-	}
+    private String converterToken(String bearerToken) {
 
-	public Boolean validarToken(String token) {
+        if (bearerToken == null) {
+            return null;
+        }
 
-		Jwts.parser().setSigningKey(UNIVERSAL_SECRET_KEY.getBytes()).parseClaimsJws(token);
+        if (bearerToken.startsWith(GlobalConstants.JWT_BEARER)) {
+            return bearerToken.substring(7, bearerToken.length());
+        }
 
-		return Boolean.TRUE;
-
-	}
-
-	public Authentication getAuthentication(String token) {
-
-		return new UsernamePasswordAuthenticationToken(token, null, null);
-
-	}
-
-	public String getPayloadByToken(String token) {
-
-		return Jwts.parser().setSigningKey(UNIVERSAL_SECRET_KEY.getBytes()).parseClaimsJws(converterToken(token))
-				.getBody().getSubject();
-
-	}
+        return bearerToken;
+    }
 
 }
