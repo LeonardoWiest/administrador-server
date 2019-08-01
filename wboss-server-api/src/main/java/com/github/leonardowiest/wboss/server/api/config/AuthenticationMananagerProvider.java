@@ -10,6 +10,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Order(2)
 public class AuthenticationMananagerProvider extends WebSecurityConfigurerAdapter {
 
+    /**
+     * @description
+     * 
+     *              Força a injeção do Bean AuthenticationManager
+     * 
+     */
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

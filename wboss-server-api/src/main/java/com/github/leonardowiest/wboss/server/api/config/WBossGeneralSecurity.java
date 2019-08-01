@@ -11,16 +11,20 @@ import com.github.leonardowiest.wboss.server.security.HttpSecurityConfig;
 
 @Configuration
 @EnableWebSecurity
-public class WBossSecurity extends WebSecurityConfigurerAdapter {
+public class WBossGeneralSecurity extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-		new AuthenticationManagerBuilderConfig(authenticationManagerBuilder).builder();
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		new HttpSecurityConfig(httpSecurity).builder();
-	}
+        new AuthenticationManagerBuilderConfig(authenticationManagerBuilder).builder();
+
+    }
+
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+
+        new HttpSecurityConfig(httpSecurity).builder();
+
+    }
 
 }

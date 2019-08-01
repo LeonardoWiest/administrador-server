@@ -6,6 +6,6 @@ import com.github.leonardowiest.wboss.server.dto.RetornoAutenticacaoDTO;
 @FunctionalInterface
 public interface AutenticacaoService {
 
-	public abstract RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO);
+    public abstract RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO);
 
 }

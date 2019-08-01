@@ -1,4 +1,4 @@
-package com.github.leonardowiest.wboss.server.api.config;
+package com.github.leonardowiest.wboss.server.security;
 
 import java.util.Arrays;
 
@@ -14,13 +14,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.github.leonardowiest.wboss.server.security.JwtTokenFilterConfigurer;
-import com.github.leonardowiest.wboss.server.security.JwtTokenProvider;
-
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Order(1)
 @Configuration
-public class WebSecurityJwtConfig extends WebSecurityConfigurerAdapter {
+public class JwtWebConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtTokenProvider jwtTokenProvider;

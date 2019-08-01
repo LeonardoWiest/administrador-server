@@ -1,11 +1,9 @@
-package com.github.leonardowiest.wboss.server.api.config;
+package com.github.leonardowiest.wboss.server.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.github.leonardowiest.wboss.server.security.CriptografiaMd5;
 
 @Configuration
 public class PasswordEncoderConfiguration {

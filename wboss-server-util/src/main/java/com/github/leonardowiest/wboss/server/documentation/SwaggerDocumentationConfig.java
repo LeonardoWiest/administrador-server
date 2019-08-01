@@ -15,33 +15,31 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 public class SwaggerDocumentationConfig {
 
-	private ApiInfo parametrosApiInfo;
+    private ApiInfo parametrosApiInfo;
 
-	private String parametrosPackageREST;
+    private String parametrosPackageREST;
 
-	public SwaggerDocumentationConfig(ApiInfo apiInfo, String packageREST) {
+    public SwaggerDocumentationConfig(ApiInfo apiInfo, String packageREST) {
 
-		super();
+        super();
 
-		this.parametrosApiInfo = apiInfo;
+        this.parametrosApiInfo = apiInfo;
 
-		this.parametrosPackageREST = packageREST;
+        this.parametrosPackageREST = packageREST;
 
-	}
+    }
 
-	public Docket produces() {
+    public Docket produces() {
 
-		return new Docket(DocumentationType.SWAGGER_2).apiInfo(parametrosApiInfo).select()
-				.apis(RequestHandlerSelectors.basePackage(parametrosPackageREST)).paths(PathSelectors.any()).build()
-				.enableUrlTemplating(Boolean.FALSE)
-				.produces(new HashSet<String>(
-						Arrays.asList(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE)))
-				.consumes(new HashSet<String>(
-						Arrays.asList(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE)))
-				.globalOperationParameters(Arrays.asList(new ParameterBuilder().name("Content-Type")
-						.description("Content-Type").defaultValue(MediaType.APPLICATION_JSON_VALUE)
-						.modelRef(new ModelRef("string")).parameterType("header").required(true).build()));
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(parametrosApiInfo).select()
+                .apis(RequestHandlerSelectors.basePackage(parametrosPackageREST)).paths(PathSelectors.any()).build()
+                .enableUrlTemplating(Boolean.FALSE)
+                .produces(new HashSet<String>(Arrays.asList(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE)))
+                .consumes(new HashSet<String>(Arrays.asList(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE)))
+                .globalOperationParameters(Arrays
+                        .asList(new ParameterBuilder().name("Content-Type").description("Content-Type").defaultValue(MediaType.APPLICATION_JSON_VALUE)
+                                .modelRef(new ModelRef("string")).parameterType("header").required(true).build()));
 
-	}
+    }
 
 }

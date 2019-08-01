@@ -10,5 +10,4 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration()
 @ComponentScan(lazyInit = true, basePackages = { PKG_SERVICE })
 public class WBossComponentScan {
-
 }

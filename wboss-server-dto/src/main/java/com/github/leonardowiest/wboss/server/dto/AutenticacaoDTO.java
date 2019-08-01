@@ -15,12 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public final class AutenticacaoDTO implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(notes = "Login do usuário")
-	private String login;
+    @ApiModelProperty(notes = "Login do usuário")
+    private String login;
 
-	@ApiModelProperty(notes = "Senha do usuário")
-	private String senha;
+    @ApiModelProperty(notes = "Senha do usuário")
+    private String senha;
 
 }

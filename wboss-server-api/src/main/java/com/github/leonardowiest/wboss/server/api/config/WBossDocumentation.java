@@ -19,16 +19,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class WBossDocumentation {
 
-	@Bean
-	@Lazy
-	public Docket swaggerConfigurationMonitor() {
+    @Bean
+    @Lazy
+    public Docket swaggerConfigurationMonitor() {
 
-		return new SwaggerDocumentationConfig(
-				new ApiInfo("WBoss Server", "Documentação On-Line", "1.0", "Terms of service",
-						new Contact("Leonardo Wiest", "https://github.com/LeonardoWiest/", "leonardowiest@hotmail.com"),
-						"", "", new ArrayList<>()),
-				PKG_API).produces().groupName("wboss-server");
+        return new SwaggerDocumentationConfig(
+                new ApiInfo("WBoss Server", "Documentação On-Line", "1.0", "Terms of service",
+                        new Contact("Leonardo Wiest", "https://github.com/LeonardoWiest/", "leonardowiest@hotmail.com"), "", "", new ArrayList<>()),
+                PKG_API).produces().groupName("wboss-server");
 
-	}
+    }
 
 }
