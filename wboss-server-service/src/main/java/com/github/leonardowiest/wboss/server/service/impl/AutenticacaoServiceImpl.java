@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.github.leonardowiest.wboss.server.dto.AutenticacaoDTO;
 import com.github.leonardowiest.wboss.server.dto.RetornoAutenticacaoDTO;
 import com.github.leonardowiest.wboss.server.repository.UsuarioRepository;
+import com.github.leonardowiest.wboss.server.resources.ResourceException;
 import com.github.leonardowiest.wboss.server.security.JwtTokenProvider;
 import com.github.leonardowiest.wboss.server.service.AutenticacaoService;
 
@@ -28,6 +29,10 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
     @Override
     public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {
+
+        if (autenticacaoDTO.getLogin() == "wiest") {
+            throw ResourceException.getException("");
+        }
 
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(autenticacaoDTO.getLogin(),
                 autenticacaoDTO.getSenha());

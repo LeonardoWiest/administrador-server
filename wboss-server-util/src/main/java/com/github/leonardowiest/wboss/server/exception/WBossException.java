@@ -1,34 +1,32 @@
 package com.github.leonardowiest.wboss.server.exception;
 
-import java.io.Serializable;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
+@Getter
 public final class WBossException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    @Getter
-    private final ExceptionResponse exceptionResponse;
+    private final String codigo;
 
-    public WBossException(String mensagem) {
+    private final String mensagem;
+
+    public WBossException(String codigo, String mensagem) {
 
         super(mensagem);
 
-        this.exceptionResponse = new ExceptionResponse(mensagem);
+        this.codigo = codigo;
+        this.mensagem = mensagem;
 
     }
 
-}
+    public WBossException(Throwable throwable) {
 
-@AllArgsConstructor
-@Data
-class ExceptionResponse implements Serializable {
+        super(throwable);
 
-    private static final long serialVersionUID = 1L;
+        this.codigo = "";
+        this.mensagem = throwable.getMessage();
 
-    private String mensagem;
+    }
 
 }
