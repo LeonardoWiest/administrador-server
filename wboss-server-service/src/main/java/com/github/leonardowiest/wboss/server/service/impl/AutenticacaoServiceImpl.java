@@ -30,8 +30,8 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
     @Override
     public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {
 
-        if (autenticacaoDTO.getLogin() == "wiest") {
-            throw ResourceException.getException("");
+        if (autenticacaoDTO.getLogin().equals("wiest")) {
+            throw ResourceException.getException("PROPRIEDADE");
         }
 
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(autenticacaoDTO.getLogin(),
