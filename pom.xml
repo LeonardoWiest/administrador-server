@@ -11,10 +11,10 @@
 		<version>2.1.6.RELEASE</version>
 	</parent>
 
-	<groupId>com.github.leonardowiest.wboss.server</groupId>
-	<artifactId>wboss-server</artifactId>
+	<groupId>com.github.leonardowiest.stone.server</groupId>
+	<artifactId>stone-server</artifactId>
 	<version>1.00.00.000</version>
-	<name>wboss-server</name>
+	<name>stone-server</name>
 	<description>...</description>
 
 	<profiles>
@@ -49,7 +49,7 @@
 
 		<java.version>1.8</java.version>
 
-		<com.github.leonardowiest.wboss.server.version>1.00.00.00</com.github.leonardowiest.wboss.server.version>
+		<com.github.leonardowiest.stone.server.version>1.00.00.00</com.github.leonardowiest.stone.server.version>
 
 		<io.springfox.version>2.9.2</io.springfox.version>
 
@@ -58,11 +58,11 @@
 	</properties>
 
 	<modules>
-		<module>wboss-server-util</module>
-		<module>wboss-server-dto</module>
-		<module>wboss-server-repository</module>
-		<module>wboss-server-service</module>
-		<module>wboss-server-api</module>
+		<module>stone-server-util</module>
+		<module>stone-server-dto</module>
+		<module>stone-server-repository</module>
+		<module>stone-server-service</module>
+		<module>stone-server-api</module>
 	</modules>
 
 </project>

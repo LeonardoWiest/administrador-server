@@ -7,14 +7,14 @@
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>com.github.leonardowiest.wboss.server</groupId>
-		<artifactId>wboss-server</artifactId>
+		<groupId>com.github.leonardowiest.stone.server</groupId>
+		<artifactId>stone-server</artifactId>
 		<version>1.00.00.000</version>
 	</parent>
 
-	<groupId>com.github.leonardowiest.wboss.server.repository</groupId>
-	<artifactId>wboss-server-repository</artifactId>
-	<name>wboss-server-repository</name>
+	<groupId>com.github.leonardowiest.stone.server.repository</groupId>
+	<artifactId>stone-server-repository</artifactId>
+	<name>stone-server-repository</name>
 	<description>...</description>
 
 	<dependencies>

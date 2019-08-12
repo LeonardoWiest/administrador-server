@@ -6,8 +6,8 @@
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>com.github.leonardowiest.wboss.server</groupId>
-		<artifactId>wboss-server</artifactId>
+		<groupId>com.github.leonardowiest.stone.server</groupId>
+		<artifactId>stone-server</artifactId>
 		<version>1.00.00.000</version>
 	</parent>
 
@@ -42,9 +42,9 @@
 
 	</dependencies>
 
-	<groupId>com.github.leonardowiest.wboss.server.util</groupId>
-	<artifactId>wboss-server-util</artifactId>
-	<name>wboss-server-util</name>
+	<groupId>com.github.leonardowiest.stone.server.util</groupId>
+	<artifactId>stone-server-util</artifactId>
+	<name>stone-server-util</name>
 	<description>...</description>
 
 </project>

@@ -6,33 +6,33 @@
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>com.github.leonardowiest.wboss.server</groupId>
-		<artifactId>wboss-server</artifactId>
+		<groupId>com.github.leonardowiest.stone.server</groupId>
+		<artifactId>stone-server</artifactId>
 		<version>1.00.00.000</version>
 	</parent>
 
-	<groupId>com.github.leonardowiest.wboss.server.service</groupId>
-	<artifactId>wboss-server-service</artifactId>
-	<name>wboss-server-service</name>
+	<groupId>com.github.leonardowiest.stone.server.service</groupId>
+	<artifactId>stone-server-service</artifactId>
+	<name>stone-server-service</name>
 	<description>...</description>
 
 	<dependencies>
 
 		<dependency>
-			<groupId>com.github.leonardowiest.wboss.server.repository</groupId>
-			<artifactId>wboss-server-repository</artifactId>
+			<groupId>com.github.leonardowiest.stone.server.repository</groupId>
+			<artifactId>stone-server-repository</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.leonardowiest.wboss.server.dto</groupId>
-			<artifactId>wboss-server-dto</artifactId>
+			<groupId>com.github.leonardowiest.stone.server.dto</groupId>
+			<artifactId>stone-server-dto</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.leonardowiest.wboss.server.util</groupId>
-			<artifactId>wboss-server-util</artifactId>
+			<groupId>com.github.leonardowiest.stone.server.util</groupId>
+			<artifactId>stone-server-util</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 

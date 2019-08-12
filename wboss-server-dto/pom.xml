@@ -6,14 +6,14 @@
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>com.github.leonardowiest.wboss.server</groupId>
-		<artifactId>wboss-server</artifactId>
+		<groupId>com.github.leonardowiest.stone.server</groupId>
+		<artifactId>stone-server</artifactId>
 		<version>1.00.00.000</version>
 	</parent>
 
-	<groupId>com.github.leonardowiest.wboss.server.dto</groupId>
-	<artifactId>wboss-server-dto</artifactId>
-	<name>wboss-server-dto</name>
+	<groupId>com.github.leonardowiest.stone.server.dto</groupId>
+	<artifactId>stone-server-dto</artifactId>
+	<name>stone-server-dto</name>
 	<description>...</description>
 
 	<dependencies>
