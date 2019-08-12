@@ -11,7 +11,7 @@ import com.github.leonardowiest.stone.server.security.HttpSecurityConfig;
 
 @Configuration
 @EnableWebSecurity
-public class WBossGeneralSecurity extends WebSecurityConfigurerAdapter {
+public class GeneralSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {

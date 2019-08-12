@@ -5,12 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.github.leonardowiest.stone.server.security.CriptografiaMd5;
-
 @Configuration
 public class PasswordEncoderConfiguration {
 
-    @Value("${wboss.global.secret.key}")
+    @Value("${stone.global.secret.key}")
     private String chaveSecreta;
 
     @Bean

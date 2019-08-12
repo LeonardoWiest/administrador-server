@@ -20,10 +20,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${wboss.global.secret.key}")
+    @Value("${stone.global.secret.key}")
     private String chaveSecreta;
 
-    @Value("${wboss.jwt.expiracao}")
+    @Value("${stone.jwt.expiracao}")
     private Long tempoExpiracao;
 
     @PostConstruct
