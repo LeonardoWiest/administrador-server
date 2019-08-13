@@ -1,51 +1,22 @@
 package com.github.leonardowiest.stone.server.resources;
 
-import java.util.ResourceBundle;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.leonardowiest.stone.server.exception.WBossException;
+import com.github.leonardowiest.stone.server.exceptions.StoneException;
+import com.github.leonardowiest.stone.server.properties.ExceptionProperty;
 
-public class ResourceException {
-
-    private static ResourceBundle bundle;
+public final class ResourceException {
 
     private static Logger logger = LoggerFactory.getLogger(ResourceException.class);
 
-    private ResourceException() {
+    public static StoneException getException(String propriedade) {
 
-    }
+        String mensagem = ExceptionProperty.getPropertyUsuario(propriedade);
 
-    public static String tratarMensagem(String mensagem) {
+        logger.error(propriedade.concat(" - ").concat(mensagem));
 
-        String mensagemTratada = "";
-
-        return mensagemTratada;
-
-    }
-
-    public static WBossException getException(String codigo) {
-
-        String mensagem = adquirirProperty(codigo);
-
-        logger.error("Property ".concat(codigo).concat(" ==> ").concat(mensagem));
-
-        return new WBossException(codigo, mensagem);
-
-    }
-
-    private static String adquirirProperty(String codigo) {
-
-        bundle = ResourceBundle.getBundle("pt-BR");
-
-        try {
-            return new String(bundle.getString(codigo).getBytes("ISO-8859-1"), "UTF-8");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "";
+        return new StoneException(propriedade, mensagem);
     }
 
 }

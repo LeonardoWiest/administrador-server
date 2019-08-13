@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.leonardowiest.stone.server.dto.AutenticacaoDTO;
 import com.github.leonardowiest.stone.server.dto.RetornoAutenticacaoDTO;
-import com.github.leonardowiest.stone.server.util.annotations.WBossResponses;
+import com.github.leonardowiest.stone.server.util.annotations.Response;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiParam;
 public interface AutenticacaoController {
 
     @ApiOperation(value = REALIZAR_LOGIN, response = RetornoAutenticacaoDTO.class)
-    @WBossResponses
+    @Response
     @PostMapping(REALIZAR_LOGIN)
     public abstract RetornoAutenticacaoDTO realizarLogin(@ApiParam(PARAMETROS) AutenticacaoDTO autenticacaoDTO);
 

@@ -22,5 +22,5 @@ import io.swagger.annotations.ApiResponses;
         @ApiResponse(code = 500, message = STATUS_CODE_500) })
 @Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface WBossResponses {
+public @interface Response {
 }

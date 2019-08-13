@@ -1,25 +1,18 @@
 package com.github.leonardowiest.stone.server.properties;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
-public class ExceptionProperty {
+import com.github.leonardowiest.stone.server.resources.ResourceException;
 
-    private static ResourceBundle bundle;
+public final class ExceptionProperty {
 
-    private ExceptionProperty() {
-
-    }
-
-    public static String getMensagemProperty(String codigo) {
-
-        bundle = ResourceBundle.getBundle("pt-br");
+    public static String getPropertyUsuario(String propriedade) {
 
         try {
-            return new String(bundle.getString(codigo).getBytes("ISO-8859-1"), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            return new String(ResourceBundle.getBundle("pt-BR").getString(propriedade).getBytes("ISO-8859-1"), "UTF-8");
+        } catch (Exception e) {
+            Logger.getLogger(ResourceException.class.getName()).severe("Chave da propriedade: " + propriedade + " não esta configurada.");
         }
 
         return "";
