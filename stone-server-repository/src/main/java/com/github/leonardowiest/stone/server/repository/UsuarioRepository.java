@@ -1,4 +1,4 @@
-package com.github.leonardowiest.wboss.server.repository;
+package com.github.leonardowiest.stone.server.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

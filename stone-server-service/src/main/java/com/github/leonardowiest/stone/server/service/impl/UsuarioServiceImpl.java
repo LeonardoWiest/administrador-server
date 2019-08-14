@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.github.leonardowiest.stone.server.domain.Usuario;
+import com.github.leonardowiest.stone.server.repository.UsuarioRepository;
 import com.github.leonardowiest.stone.server.service.UsuarioService;
-import com.github.leonardowiest.wboss.server.repository.UsuarioRepository;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {

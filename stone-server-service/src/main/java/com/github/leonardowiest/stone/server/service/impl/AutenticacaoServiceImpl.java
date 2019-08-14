@@ -8,15 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.github.leonardowiest.stone.server.dto.AutenticacaoDTO;
 import com.github.leonardowiest.stone.server.dto.RetornoAutenticacaoDTO;
-import com.github.leonardowiest.stone.server.resources.ResourceException;
+import com.github.leonardowiest.stone.server.repository.UsuarioRepository;
 import com.github.leonardowiest.stone.server.security.JwtTokenProvider;
 import com.github.leonardowiest.stone.server.service.AutenticacaoService;
-import com.github.leonardowiest.wboss.server.repository.UsuarioRepository;
 
 @Service
 public class AutenticacaoServiceImpl implements AutenticacaoService {
 
-    @Lazy
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -30,20 +28,12 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
     @Override
     public RetornoAutenticacaoDTO realizarLogin(AutenticacaoDTO autenticacaoDTO) {
 
-        if (autenticacaoDTO.getLogin().equals("wiest")) {
-            throw ResourceException.getException("PROPRIEDADE");
-        }
-
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(autenticacaoDTO.getLogin(),
                 autenticacaoDTO.getSenha());
 
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-        return buscarToken(autenticacaoDTO.getLogin());
-    }
-
-    private RetornoAutenticacaoDTO buscarToken(String login) {
-        return new RetornoAutenticacaoDTO(jwtTokenProvider.gerarToken(usuarioRepository.findByLogin(login)));
+        return new RetornoAutenticacaoDTO(jwtTokenProvider.gerarToken(usuarioRepository.findByLogin(autenticacaoDTO.getLogin())));
     }
 
 }

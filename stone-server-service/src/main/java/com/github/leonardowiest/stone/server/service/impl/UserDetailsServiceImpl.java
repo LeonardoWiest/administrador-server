@@ -20,9 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        return Optional.ofNullable(usuarioService.findByLogin(username)).orElseThrow(() -> new RuntimeException("vazio"));
-
+        return Optional.ofNullable(usuarioService.findByLogin(username)).get();
     }
 
 }

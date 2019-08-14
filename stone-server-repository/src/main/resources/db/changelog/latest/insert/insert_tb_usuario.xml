@@ -6,6 +6,8 @@
 
 	<changeSet author="Leonardo Wiest" id="insert_tb_usuario" logicalFilePath="insert_tb_usuario.xml">
 
+		<validCheckSum>8:f930b5b91cabec2a827d9520d3b43a7f</validCheckSum>
+
 		<insert dbms="postgresql" tableName="tb_usuario">
 			<column name="id_usuario" valueComputed="nextval('gen_usuario')" />
 			<column name="tx_nome" value="Leonardo Wiest" />
