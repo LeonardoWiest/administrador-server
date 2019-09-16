@@ -3,6 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -10,24 +11,50 @@
 		<version>2.1.6.RELEASE</version>
 	</parent>
 
-	<packaging>pom</packaging>
 	<groupId>com.github.leonardowiest.stone.server</groupId>
-	<artifactId>stone-server-api</artifactId>
+	<artifactId>stone-server</artifactId>
 	<version>1.00.00.000</version>
 	<name>stone-server</name>
-	<description>Fornecimento de serviços para o Stone-Client</description>
+	<description>...</description>
 
-	<developers>
-		<developer>
-			<name>Leonardo Wiest</name>
-			<email>leonardowiest@hotmail.com</email>
-		</developer>
-	</developers>
+	<profiles>
+
+		<profile>
+			<id>development</id>
+			<properties>
+				<activatedProperties>development</activatedProperties>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+
+		<profile>
+			<id>production</id>
+			<properties>
+				<activatedProperties>production</activatedProperties>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<properties>
+				<activatedProperties>test</activatedProperties>
+			</properties>
+		</profile>
+
+	</profiles>
 
 	<properties>
+
 		<java.version>1.8</java.version>
+
+		<com.github.leonardowiest.stone.server.version>1.00.00.00</com.github.leonardowiest.stone.server.version>
+
 		<io.springfox.version>2.9.2</io.springfox.version>
+
 		<org.modelmapper.version>2.3.3</org.modelmapper.version>
+
 	</properties>
 
 	<modules>
